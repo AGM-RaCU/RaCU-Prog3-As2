@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BallSpawner : MonoBehaviour
 {
@@ -15,7 +16,12 @@ public class BallSpawner : MonoBehaviour
             GameObject ball = Instantiate(ballPrefab, transform.position, Quaternion.identity, transform);
 
             Rigidbody2D body2D = ball.GetComponent<Rigidbody2D>();
-            body2D.AddForce(randomColours.insideUnitCircle.normalized, ForceMode2D.Impulse);
+            body2D.AddForce(Random.insideUnitCircle.normalized, ForceMode2D.Impulse);
+
+            if (randomColours)
+                ball.GetComponent<SpriteRenderer>().color = new(Random.value, Random.value, Random.value);
+
+            yield return new WaitForSeconds(ballSpawnInterval);
         }
     }
 
