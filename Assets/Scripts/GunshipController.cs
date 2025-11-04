@@ -6,7 +6,7 @@ public class GunshipController : MonoBehaviour
     [SerializeField] private Transform rightCannon;
 
     public GameObject cannonballPrefab;
-    public float cannonballForce = 150f;
+    public float cannonballForce = 25f;
 
 
     void Update()
