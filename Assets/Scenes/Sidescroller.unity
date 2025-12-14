@@ -359,6 +359,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a1ce42ea3e3dd44868493ae73ec06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  body2D: {fileID: 0}
+  maxSpeed: 5
+  accelerationTime: 0.5
+  decelerationTime: 0.25
+  apexHeight: 3.5
+  apexTime: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.55
+  groundCheckSize: {x: 0.75, y: 0.2}
 --- !u!1 &1054579204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,6 +1776,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a1ce42ea3e3dd44868493ae73ec06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body2D: {fileID: 1433354318}
+  maxSpeed: 5
+  accelerationTime: 0.5
+  decelerationTime: 0.25
+  apexHeight: 3.5
+  apexTime: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.55
+  groundCheckSize: {x: 0.75, y: 0.2}
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0

@@ -58,10 +58,10 @@ public class PlayerController : MonoBehaviour
         MovementUpdate();
     }
 
-    private void MovementUpdate(Vector2 playerInput)
+    private void MovementUpdate()
     {
         ProcessWalkInput();
-        ProcessJumpInput();
+        //ProcessJumpInput();
 
         body2D.linearVelocity = velocity;
     }
