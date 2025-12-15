@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         gravity = -2 * apexHeight / (apexTime * apexTime);
         jumpVel = 2 * apexHeight / apexTime;
 
-        body2D.gravityScale = 0;
+        body2D.gravityScale = -gravity;
     }
 
     void Update()
@@ -51,17 +51,25 @@ public class PlayerController : MonoBehaviour
         };
 
         if (playerInput.y == 1) jumpPressed = true;
+        if (IsFalling()) jumpPressed = false;
+        Debug.Log("a"+ IsGrounded());
+        Debug.Log("b"+ jumpPressed);
+        Debug.Log("c" + velocity.y);
+        Debug.Log("d" + body2D.position.y);
+        Debug.Log("e" + IsFalling());
+
     }
 
     private void FixedUpdate()
     {
         MovementUpdate();
+
     }
 
     private void MovementUpdate()
     {
         ProcessWalkInput();
-        //ProcessJumpInput();
+        ProcessJumpInput();
 
         body2D.linearVelocity = velocity;
     }
@@ -85,17 +93,73 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void ProcessJumpInput()
+    {
+        
+            if (jumpPressed)
+            {
+                body2D.gravityScale = -jumpVel;
+            }   
+
+        
+
+        else
+        {
+            body2D.gravityScale = -gravity;
+        }
+    }
+
     public bool IsWalking()
     {
-        return false;
+        if (playerInput.x != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public bool IsGrounded()
     {
-        return false;
+        if (Physics2D.BoxCast(body2D.position, groundCheckSize, 0f, Vector2.down, groundCheckDistance, groundLayer))
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+        
     }
+
+    public bool IsFalling()
+    {
+        if (Physics2D.BoxCast(body2D.position, groundCheckSize, 0f, Vector2.down, 4f, groundLayer))
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
+    }
+
 
     public FacingDirection GetFacingDirection()
     {
-        return FacingDirection.left;
+
+        if (playerInput.x>=0)
+        {
+            return FacingDirection.right;
+        }
+        else
+        {
+            return FacingDirection.left;
+        }
+
+       
     }
 }
