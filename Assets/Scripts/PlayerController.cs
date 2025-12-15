@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 playerInput;
     private bool jumpPressed = false;
 
+    public float terminalSpeed;
+
     void Start()
     {
         acceleration = maxSpeed / accelerationTime;
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
         gravity = -2 * apexHeight / (apexTime * apexTime);
         jumpVel = 2 * apexHeight / apexTime;
 
-        body2D.gravityScale = -gravity;
+        body2D.gravityScale = -gravity * terminalSpeed;
     }
 
     void Update()
@@ -105,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
         else
         {
-            body2D.gravityScale = -gravity;
+            body2D.gravityScale = -gravity * terminalSpeed;
         }
     }
 
