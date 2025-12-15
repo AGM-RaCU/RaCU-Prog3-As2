@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
     public float terminalSpeed;
 
+    public float fallingDetector = 4f;
+
     void Start()
     {
         acceleration = maxSpeed / accelerationTime;
@@ -59,6 +61,25 @@ public class PlayerController : MonoBehaviour
         Debug.Log("c" + velocity.y);
         Debug.Log("d" + body2D.position.y);
         Debug.Log("e" + IsFalling());
+
+        if (Input.GetKey(KeyCode.J))
+        {
+            fallingDetector = 8;
+        }
+        else
+        {
+            fallingDetector = 4;
+        }
+
+        if (Input.GetKey(KeyCode.V))
+        {
+            maxSpeed = 10;
+        }
+        else
+        {
+            maxSpeed = 5;
+        }
+     
 
     }
 
@@ -138,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsFalling()
     {
-        if (Physics2D.BoxCast(body2D.position, groundCheckSize, 0f, Vector2.down, 4f, groundLayer))
+        if (Physics2D.BoxCast(body2D.position, groundCheckSize, 0f, Vector2.down, fallingDetector, groundLayer))
         {
             return false;
         }

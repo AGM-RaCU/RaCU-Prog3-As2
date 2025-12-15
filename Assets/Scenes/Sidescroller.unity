@@ -370,6 +370,8 @@ MonoBehaviour:
     m_Bits: 8
   groundCheckDistance: 0.55
   groundCheckSize: {x: 0.75, y: 0.2}
+  terminalSpeed: 0
+  fallingDetector: 4
 --- !u!1 &1054579204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1789,8 @@ MonoBehaviour:
     m_Bits: 8
   groundCheckDistance: 0.55
   groundCheckSize: {x: 0.75, y: 0.2}
+  terminalSpeed: 1
+  fallingDetector: 4
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0
